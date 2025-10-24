@@ -1,6 +1,7 @@
 package com.taxist.JibMeak.dto;
 
 import java.time.LocalTime;
+import java.util.List;
 
 public class WarehouseDTO {
     private Long id;
@@ -9,6 +10,8 @@ public class WarehouseDTO {
     private double longitude;
     private LocalTime openHour;
     private LocalTime closeHour;
+
+    private List<Long> tourIds;
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }

@@ -2,12 +2,16 @@ package com.taxist.JibMeak.dto;
 
 import com.taxist.JibMeak.model.enums.VehicleType;
 
+import java.util.List;
+
 public class VehicleDTO {
     private Long id;
     private VehicleType type;
     private double maxWeightKg;
     private double maxVolumeM3;
     private int maxDeliveries;
+
+    private List<Long> tourIds;
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }

@@ -1,8 +1,10 @@
 package com.taxist.JibMeak.model;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.Cascade;
 
 import java.time.LocalTime;
+import java.util.List;
 
 @Entity
 @Table(name = "warehouses")
@@ -18,6 +20,9 @@ public class Warehouse {
 
     private LocalTime openHour;
     private LocalTime closeHour;
+
+    @OneToMany(mappedBy = "warehouse")
+    private List<Tour> tours;
 
     public Long getId() {
         return id;
@@ -66,4 +71,8 @@ public class Warehouse {
     public void setCloseHour(LocalTime closeHour) {
         this.closeHour = closeHour;
     }
+
+    public List<Tour> getTours() { return tours; }
+
+    public void setTours(List<Tour> tours) { this.tours = tours; }
 }

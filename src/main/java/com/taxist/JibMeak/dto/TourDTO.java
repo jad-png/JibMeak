@@ -7,6 +7,7 @@ public class TourDTO {
     private Long id;
     private LocalDate date;
     private Long vehicleId;
+    // json type reference
     private Long warehouseId;
     private List<Long> deliveryIds;
 
