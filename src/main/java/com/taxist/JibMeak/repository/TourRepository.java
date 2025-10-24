@@ -1,4 +1,4 @@
-package com.taxist.JibMeak.repository.intefaces;
+package com.taxist.JibMeak.repository;
 
 import com.taxist.JibMeak.model.Tour;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -8,5 +8,4 @@ import java.util.List;
 
 public interface TourRepository extends JpaRepository<Tour, Long> {
     List<Tour> findByDate(LocalDate date);
-    List<Tour> findByVehiculeId(Long vehiculeId);
 }
