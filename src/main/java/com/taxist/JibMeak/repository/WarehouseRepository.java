@@ -1,4 +1,4 @@
-package com.taxist.JibMeak.repository.intefaces;
+package com.taxist.JibMeak.repository;
 
 import com.taxist.JibMeak.model.Warehouse;
 import org.springframework.data.jpa.repository.JpaRepository;
