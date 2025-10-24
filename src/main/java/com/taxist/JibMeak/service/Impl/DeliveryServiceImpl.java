@@ -5,6 +5,7 @@ import com.taxist.JibMeak.mapper.DeliveryMapper;
 import com.taxist.JibMeak.model.Delivery;
 import com.taxist.JibMeak.repository.DeliveryRepository;
 import com.taxist.JibMeak.service.interfaces.DeliveryService;
+import com.taxist.JibMeak.utils.DeliveryValidationUtils;
 
 import java.util.List;
 import java.util.Optional;
@@ -21,6 +22,7 @@ public class DeliveryServiceImpl implements DeliveryService {
 
     public DeliveryDTO createDelivery(DeliveryDTO dto) {
         Delivery delivery = mapper.toEntity(dto);
+        DeliveryValidationUtils.validateDelivery(delivery);
         Delivery savedDelivery = deliveryRepo.save(delivery);
         return mapper.toDTO(savedDelivery);
     }
