@@ -18,6 +18,7 @@
     <bean id="tourMapper" class="com.taxist.JibMeak.mapper.TourMapperImpl"/>
     <bean id="vehicleMapper" class="com.taxist.JibMeak.mapper.VehicleMapperImpl"/>
     <bean id="warehouseMapper" class="com.taxist.JibMeak.mapper.WarehouseMapperImpl" />
+    <bean id="deliveryMapper" class="com.taxist.JibMeak.mapper.DeliveryMapperImpl" />
 
     <bean id="tourService" class="com.taxist.JibMeak.service.Impl.TourServiceImpl">
         <constructor-arg ref="tourRepository"/>
@@ -32,5 +33,10 @@
     <bean id="warehouseService" class="com.taxist.JibMeak.service.Impl.WarehouseImpl">
         <constructor-arg ref="warehouseRepository" />
         <constructor-arg ref="warehouseMapper" />
+    </bean>
+
+    <bean id="deliveryService" class="com.taxist.JibMeak.service.Impl.DeliveryServiceImpl">
+        <constructor-arg ref="deliveryRepository" />
+        <constructor-arg ref="deliveryMapper" />
     </bean>
 </beans>
