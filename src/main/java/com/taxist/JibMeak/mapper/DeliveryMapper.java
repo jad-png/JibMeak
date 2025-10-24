@@ -8,8 +8,6 @@ import org.mapstruct.factory.Mappers;
 
 @Mapper(componentModel = "spring")
 public interface DeliveryMapper {
-    DeliveryMapper INSTANCE = Mappers.getMapper(DeliveryMapper.class);
-
     @Mapping(source = "tour.id", target = "tourId")
     DeliveryDTO toDTO(Delivery delivery);
 
