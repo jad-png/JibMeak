@@ -1,4 +1,4 @@
-package com.taxist.JibMeak.repository.intefaces;
+package com.taxist.JibMeak.repository;
 
 import com.taxist.JibMeak.model.Delivery;
 import com.taxist.JibMeak.model.enums.DeliveryStatus;
