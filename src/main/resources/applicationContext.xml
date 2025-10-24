@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/data/jpa
+        https://www.springframework.org/schema/data/jpa/spring-jpa.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <jpa:repositories base-package="com.taxist.JibMeak.repository"/>
+
+    <context:component-scan base-package="com.taxist.JibMeak.mapper"/>
+
+    <!-- ======================== BEANS ======================== -->
+
+    <bean id="tourMapper" class="com.taxist.JibMeak.mapper.TourMapperImpl"/>
+    <bean id="vehicleMapper" class="com.taxist.JibMeak.mapper.VehicleMapperImpl"/>
+    <bean id="warehouseMapper" class="com.taxist.JibMeak.mapper.WarehouseMapperImpl" />
+
+    <bean id="tourService" class="com.taxist.JibMeak.service.Impl.TourServiceImpl">
+        <constructor-arg ref="tourRepository"/>
+        <constructor-arg ref="tourMapper"/>
+    </bean>
+
+    <bean id="vehicleService" class="com.taxist.JibMeak.service.Impl.VehicleServiceImpl">
+        <constructor-arg ref="vehicleRepository" />
+        <constructor-arg ref="vehicleMapper" />
+    </bean>
+
+    <bean id="warehouseService" class="com.taxist.JibMeak.service.Impl.WarehouseImpl">
+        <constructor-arg ref="warehouseRepository" />
+        <constructor-arg ref="warehouseMapper" />
+    </bean>
+</beans>
