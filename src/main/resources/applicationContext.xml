@@ -13,16 +13,31 @@
 
     <context:component-scan base-package="com.taxist.JibMeak.mapper"/>
 
-    <!-- ======================== BEANS ======================== -->
+    <!-- ============================= UTILITY BEANS ============================= -->
+
+    <!--  Algorithm Beans  -->
+    <bean id="nearestNeighborOptimizer" class="com.taxist.JibMeak.algo.NearestNeighborOptimizer"/>
+
+    <!-- Utility Classes-->
+    <bean id="distanceCalculator" class="com.taxist.JibMeak.utils.DistanceCalculator"/>
+    <bean id="vehicleConstraints" class="com.taxist.JibMeak.utils.VehicleConstraints"/>
+
+    <!-- ============================= MAPPER BEANS ============================= -->
 
     <bean id="tourMapper" class="com.taxist.JibMeak.mapper.TourMapperImpl"/>
     <bean id="vehicleMapper" class="com.taxist.JibMeak.mapper.VehicleMapperImpl"/>
     <bean id="warehouseMapper" class="com.taxist.JibMeak.mapper.WarehouseMapperImpl" />
     <bean id="deliveryMapper" class="com.taxist.JibMeak.mapper.DeliveryMapperImpl" />
 
+    <!-- ============================= SERVICE BEANS ============================= -->
+
     <bean id="tourService" class="com.taxist.JibMeak.service.Impl.TourServiceImpl">
         <constructor-arg ref="tourRepository"/>
         <constructor-arg ref="tourMapper"/>
+        <constructor-arg ref="warehouseRepository" />
+        <constructor-arg ref="vehicleRepository" />
+        <constructor-arg ref="deliveryRepository" />
+        <constructor-arg ref="nearestNeighborOptimizer" />
     </bean>
 
     <bean id="vehicleService" class="com.taxist.JibMeak.service.Impl.VehicleServiceImpl">
