@@ -1,6 +1,7 @@
 package com.taxist.JibMeak.controller;
 
 import com.taxist.JibMeak.dto.TourDTO;
+import com.taxist.JibMeak.dto.TourOptimizationDTO;
 import com.taxist.JibMeak.service.interfaces.TourService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -41,5 +42,11 @@ public class TourController {
     public ResponseEntity<TourDTO> deleteTourById(@RequestParam Long id) {
         service.deleteTour(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/optimize")
+    public ResponseEntity<TourDTO> createOptimizedTour(@RequestBody TourOptimizationDTO request) {
+        TourDTO optimizedTour = service.createOptimizedTour(request);
+        return ResponseEntity.ok(optimizedTour);
     }
 }
