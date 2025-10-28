@@ -1,6 +1,7 @@
 package com.taxist.JibMeak.controller;
 
 import com.taxist.JibMeak.dto.TourDTO;
+import com.taxist.JibMeak.dto.TourOptimizationDTO;
 import com.taxist.JibMeak.dto.VehicleDTO;
 import com.taxist.JibMeak.model.Vehicle;
 import com.taxist.JibMeak.service.interfaces.VehicleService;

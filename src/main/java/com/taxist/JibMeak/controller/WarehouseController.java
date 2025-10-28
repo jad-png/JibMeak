@@ -21,7 +21,7 @@ public class WarehouseController {
     }
 
     @PostMapping
-    public ResponseEntity<WarehouseDTO> createWarehouse(WarehouseDTO dto) {
+    public ResponseEntity<WarehouseDTO> createWarehouse(@RequestBody  WarehouseDTO dto) {
         WarehouseDTO whs = service.create(dto);
         return new ResponseEntity<>(whs, HttpStatus.CREATED);
     }
@@ -38,8 +38,9 @@ public class WarehouseController {
         return ResponseEntity.ok(whs);
     }
 
-    @PutMapping
-    public ResponseEntity<WarehouseDTO> updateWarehouse(WarehouseDTO dto) {
+    @PutMapping({"/{id}"})
+    public ResponseEntity<WarehouseDTO> updateWarehouse(@PathVariable Long id, @RequestBody  WarehouseDTO dto) {
+        dto.setId(id);
         WarehouseDTO whs = service.update(dto);
         return ResponseEntity.ok(whs);
     }
