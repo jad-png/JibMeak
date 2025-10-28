@@ -1,6 +1,7 @@
 package com.taxist.JibMeak.service.interfaces;
 
 import com.taxist.JibMeak.dto.TourDTO;
+import com.taxist.JibMeak.dto.TourOptimizationDTO;
 
 import java.util.List;
 
@@ -12,4 +13,6 @@ public interface TourService {
     List<TourDTO> getAllTours();
 
     void deleteTour(Long id);
+
+    TourDTO createOptimizedTour(TourOptimizationDTO request);
 }
