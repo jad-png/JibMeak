@@ -2,12 +2,17 @@ package com.taxist.JibMeak.controller;
 
 import com.taxist.JibMeak.dto.TourDTO;
 import com.taxist.JibMeak.dto.TourOptimizationDTO;
+import com.taxist.JibMeak.dto.TourStatisticsDTO;
+import com.taxist.JibMeak.model.Tour;
 import com.taxist.JibMeak.service.interfaces.TourService;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 //import javax.xml.ws.Response;
+import java.text.DateFormat;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -48,5 +53,12 @@ public class TourController {
     public ResponseEntity<TourDTO> createOptimizedTour(@RequestBody TourOptimizationDTO request) {
         TourDTO optimizedTour = service.createOptimizedTour(request);
         return ResponseEntity.ok(optimizedTour);
+    }
+
+    @GetMapping("/stats")
+    public ResponseEntity<TourStatisticsDTO> getTourStats(@RequestParam Long vehicleId,
+                                                          @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)LocalDate date) {
+        TourStatisticsDTO stats = service.getTourByVehicleIdAndDate(vehicleId, date);
+        return ResponseEntity.ok(stats);
     }
 }
