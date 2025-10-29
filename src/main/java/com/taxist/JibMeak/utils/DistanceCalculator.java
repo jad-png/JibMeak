@@ -33,7 +33,7 @@ public class DistanceCalculator {
         final double EARTH_RADIUS_KM = 6371.0;
 
         double lat1Rad = Math.toRadians(lat1);
-        double lon1Rad = Math.toRadians(lon2);
+        double lon1Rad = Math.toRadians(lon1);
 
         double lat2Rad = Math.toRadians(lat2);
         double lon2Rad = Math.toRadians(lon2);
