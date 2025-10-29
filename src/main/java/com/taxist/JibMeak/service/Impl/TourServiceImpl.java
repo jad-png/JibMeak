@@ -12,7 +12,9 @@ import com.taxist.JibMeak.repository.TourRepository;
 import com.taxist.JibMeak.repository.VehicleRepository;
 import com.taxist.JibMeak.repository.WarehouseRepository;
 import com.taxist.JibMeak.service.interfaces.TourService;
+import com.taxist.JibMeak.utils.DistanceCalculator;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -36,7 +38,7 @@ public class TourServiceImpl implements TourService {
     @Override
     public TourDTO createTour(TourDTO dto) {
         Tour tour = tourMapper.toEntity(dto);
-
+        
         validateTour(tour);
         Tour savedTour = tourRepository.save(tour);
         return tourMapper.toDTO(savedTour);
@@ -80,5 +82,40 @@ public class TourServiceImpl implements TourService {
         Tour savedTour = tourRepository.save(optimizedTour);
 
         return tourMapper.toDTO(savedTour);
+    }
+
+    private double calculateTourDistance(Tour t) {
+        double distance = 0.0;
+
+        List<Delivery> dvs = t.getDeliveries();
+        Warehouse wh = t.getWarehouse();
+
+        // step 1: dsitance from wh to delivery 1
+        distance += DistanceCalculator.calculateDistance(wh, dvs.get(0));
+
+        // step 2: distance between intermediate deliveries
+        for (int i = 1; i < t.getDeliveries().size(); i++) {
+            distance += DistanceCalculator.calculateDistance(dvs.get(i), dvs.get(i + 1));
+        }
+
+        // step 3: distance from last delivery wayback to warehouse
+        distance += DistanceCalculator.calculateDistance(dvs.get(dvs.size() -1), wh);
+
+        return distance;
+    }
+
+    public TourStatisticsDTO getTourByVehicleIdAndDate(Long vehicleId, LocalDate date) {
+        List<Tour> trs = tourRepository.findTourByVehicleIdAndDate(vehicleId, date);
+
+        double distance = trs.stream().mapToDouble(this::calculateTourDistance).sum();
+
+        List<TourDTO> tourDTOs = trs.stream().map(tourMapper::toDTO).collect(Collectors.toList());
+
+        TourStatisticsDTO dto = new TourStatisticsDTO();
+
+        dto.setTours(tourDTOs);
+        dto.setTotalDistanceKm(distance);
+
+        return dto;
     }
 }
