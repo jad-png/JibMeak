@@ -11,6 +11,7 @@ public class TourDTO {
     private Long warehouseId;
     private List<Long> deliveryIds;
 
+
     // Getters and Setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
