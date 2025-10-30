@@ -23,7 +23,7 @@ The system implements intelligent **tour optimization** using the **Nearest Neig
     * Time window preferences.
     * Status tracking (**PENDING**, **IN\_TRANSIT**, **DELIVERED**, **FAILED**).
 * **Tour Optimization**
-    * Automated route planning using the **Nearest Neighbor algorithm**.
+    * Automated route planning using the **Nearest Neighbor algorithm** and **Clarke Wright algorithm**.
     * Vehicle capacity constraints validation.
     * Distance calculation and optimization.
     * Multi-stop delivery planning.
