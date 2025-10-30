@@ -22,6 +22,8 @@
     <bean id="distanceCalculator" class="com.taxist.JibMeak.utils.DistanceCalculator"/>
     <bean id="vehicleConstraints" class="com.taxist.JibMeak.utils.VehicleConstraints"/>
 
+    <bean id="optimizer" class="com.taxist.JibMeak.algo.Optimizer" />
+
     <!-- ============================= MAPPER BEANS ============================= -->
 
     <bean id="tourMapper" class="com.taxist.JibMeak.mapper.TourMapperImpl"/>
