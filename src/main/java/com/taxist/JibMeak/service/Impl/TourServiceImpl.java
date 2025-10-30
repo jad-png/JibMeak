@@ -1,6 +1,7 @@
 package com.taxist.JibMeak.service.Impl;
 
 import com.taxist.JibMeak.algo.NearestNeighborOptimizer;
+import com.taxist.JibMeak.algo.Optimizer;
 import com.taxist.JibMeak.dto.*;
 import com.taxist.JibMeak.mapper.TourMapper;
 import com.taxist.JibMeak.model.Delivery;
@@ -24,9 +25,9 @@ public class TourServiceImpl implements TourService {
     private final WarehouseRepository whRepo;
     private final VehicleRepository vehRepo;
     private final DeliveryRepository dvRepo;
-    private final NearestNeighborOptimizer optimizer;
+    private final Optimizer optimizer;
 
-    public TourServiceImpl(TourRepository trRepository, TourMapper trMapper, WarehouseRepository whRepo, DeliveryRepository dvRepo, VehicleRepository vhRepo, NearestNeighborOptimizer optimizer) {
+    public TourServiceImpl(TourRepository trRepository, TourMapper trMapper, WarehouseRepository whRepo, DeliveryRepository dvRepo, VehicleRepository vhRepo, Optimizer optimizer) {
         this.tourRepository = trRepository;
         this.tourMapper = trMapper;
         this.whRepo = whRepo;
