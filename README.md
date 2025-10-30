@@ -46,7 +46,7 @@ The system implements intelligent **tour optimization** using the **Nearest Neig
 
 ---
 
-## Diagrame Class
+## Class Diagram 
 
 ![JibMeak Class Diagram](images/CD.jpg)
 
