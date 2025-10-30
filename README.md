@@ -46,6 +46,11 @@ The system implements intelligent **tour optimization** using the **Nearest Neig
 
 ---
 
+## Diagrame Class
+
+![JibMeak Class Diagram](images/CD.jpg)
+
+---
 ## 📂 Project Structure
 
 ```shell
