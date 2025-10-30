@@ -13,7 +13,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NearestNeighborOptimizer {
+public class NearestNeighborOptimizer implements Optimizer {
     public Tour optimizeTour(Warehouse wh, List<Delivery> allDvs, Vehicle vh) {
         // step1: filter by capacity
         List<Delivery> feasibleDvs = filterByCapacity(allDvs, vh);
